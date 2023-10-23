@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel ="clr-namespace:ContactListMaui2.MVVM.ViewModels"
+             x:DataType="viewmodel:AddViewModel"
+             
+             x:Class="ContactListMaui2.MVVM.Views.AddPage"
+             Title="AddPage"
+             Shell.NavBarIsVisible="false">
+    
+    <Grid RowDefinitions="*, auto" Padding="30">
+        <ScrollView>
+            <VerticalStackLayout Grid.Row="0">
+                <!-- Sets the properties for the ObservableProperties in AddViewModel  -->
+                <Label Text="Firstname" />
+                <Entry Text="{Binding FirstName}" Margin="0,0,0,20" />
+                <Label Text="Sirname" />
+                <Entry Text="{Binding LastName}" Margin="0,0,0,20" />
+                <Label Text="Email" />
+                <Entry Text="{Binding Email}" Margin="0,0,0,20" />
+                <Label Text="Phonenumber" />
+                <Entry Text="{Binding PhoneNumber}" Margin="0,0,0,20" />
+                <Label Text="Street adress" />
+                <Entry Text="{Binding Street}" Margin="0,0,0,20" />
+                <Label Text="Zip Code" />
+                <Entry Text="{Binding PostalCode}" Margin="0,0,0,20" />
+                <Label Text="City" />
+                <Entry Text="{Binding City}" Margin="0,0,0,20" />
+
+                <!-- Triggers the Save RelayCommand in AddViewModel  -->
+                <Button Text="Add Contact" Command="{Binding SaveCommand }" />
+                <!-- Triggers the GoBack RelayCommand in AddViewModel  -->
+                <Button Text="Go Back" Command="{Binding GoBackCommand}" />
+            </VerticalStackLayout>
+
+           
+        </ScrollView>
+       
+
+    </Grid>
+   
+
+</ContentPage>

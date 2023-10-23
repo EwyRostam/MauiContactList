@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ContactListMaui2.MVVM.ViewModels"
+             xmlns:models="clr-namespace:ContactListMaui2.MVVM.Models"
+             x:DataType="viewmodel:EditViewModel"
+             x:Class="ContactListMaui2.MVVM.Views.EditPage"
+             Title="EditPage">
+    
+    
+    <Grid RowDefinitions="*, auto" Padding="30">
+        <ScrollView>
+            <VerticalStackLayout Grid.Row="0">
+                <Label Text="Firstname" />
+                <Entry Text="{Binding Contact.FirstName}" Margin="0,0,0,20" />
+                <Label Text="Sirname" />
+                <Entry Text="{Binding Contact.LastName}" Margin="0,0,0,20" />
+                <Label Text="Email" />
+                <Entry Text="{Binding Contact.Email}" Margin="0,0,0,20" />
+                <Label Text="Phonenumber" />
+                <Entry Text="{Binding Contact.PhoneNumber}" Margin="0,0,0,20" />
+                <Label Text="Street adress" />
+                <Entry Text="{Binding Contact.Street}" Margin="0,0,0,20" />
+                <Label Text="Zip Code" />
+                <Entry Text="{Binding Contact.PostalCode}" Margin="0,0,0,20" />
+                <Label Text="City" />
+                <Entry Text="{Binding Contact.City}" Margin="0,0,0,20" />
+
+
+                <Button Text="Go Back" Command="{Binding GoBackCommand}" />
+                <Button Text="Save update" Command="{Binding SaveCommand}" />
+            </VerticalStackLayout>
+
+
+        </ScrollView>
+
+
+    </Grid>
+</ContentPage>

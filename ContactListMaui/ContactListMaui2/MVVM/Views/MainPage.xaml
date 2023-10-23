@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:ContactListMaui2.MVVM.Models"
+             xmlns:viewmodel="clr-namespace:ContactListMaui2.MVVM.ViewModels"
+             x:DataType="viewmodel:MainViewModel"
+             x:Class="ContactListMaui2.MainPage">
+
+    <ScrollView>
+        <Grid RowDefinitions="auto, auto, *" Margin="10" RowSpacing="10" ColumnSpacing="10" >
+
+            <Label Text="CONTACT LIST" HorizontalOptions="Center" Grid.Row="0" FontSize="Large" FontAttributes="Bold" Padding="20"/>
+            <CollectionView Grid.Row="1" Grid.ColumnSpan="1" ItemsSource="{Binding Contacts}" > <!-- Shows the observable collection "Contacts"  -->
+
+                <CollectionView.ItemTemplate>
+
+                    <!-- Sets the type for the collectionview to "ContactModel"  -->
+                    <DataTemplate x:DataType="{x:Type models:ContactModel}">
+                        
+
+                        <Frame Margin="0,0,0,10">
+
+                            <!-- Grid for the deletebutton and the TapGestureRecognizer on the label to be separeted  -->
+                            <Grid ColumnDefinitions="*, auto" > 
+
+
+                                <Grid Grid.Column="0">
+                                    <Label Text="{Binding FullName}" FontSize="20"/>
+
+
+                                    <Grid.GestureRecognizers >
+                                        <!-- Tap on the label triggers to go back from X:Type ContactModel to MainViewModel where we can find the Detail RelayCommand. Binding the contact clicked on. -->
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DetailCommand}" CommandParameter ="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
+
+                                </Grid>
+
+                                <Button Grid.Column="1" VerticalOptions="Center"  Text="Delete" BackgroundColor="Red"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=RemoveCommand}"
+                            CommandParameter="{Binding .}"/>
+
+
+
+                            </Grid>
+
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid Grid.Row="2" VerticalOptions="End">
+                <Button Text="Create a new contact" Command="{Binding GoToAddCommand}"  />
+            </Grid>
+
+
+
+
+        </Grid>
+    </ScrollView>
+   
+
+</ContentPage>
